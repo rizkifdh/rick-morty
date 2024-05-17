@@ -3,6 +3,9 @@ import useSWR from "swr";
 import { fetcher } from "./libs/fetcher";
 import { useState, useEffect } from "react";
 import { ModalCharacter } from "./components/ModalCharacter";
+import { apiUrl } from "./libs/api-url";
+import Error from "./components/Error";
+import Loading from "./components/Loading";
 
 interface Character {
   id: number;
@@ -13,7 +16,7 @@ interface Character {
 function LocationById() {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading, error } = useSWR(
-    `https://rickandmortyapi.com/api/location/${id}`,
+    `${apiUrl}/location/${id}`,
     fetcher
   );
 
@@ -42,8 +45,8 @@ function LocationById() {
     }
   };
 
-  if (error) return <div>Error loading data</div>;
-  if (isLoading) return <div>Loading...</div>;
+  if (error) return <Error />;
+  if (isLoading) return <Loading />;
 
   return (
     <>

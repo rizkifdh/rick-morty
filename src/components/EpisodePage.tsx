@@ -4,7 +4,7 @@ import useSWR from "swr";
 import { Link } from "react-router-dom";
 import Error from "./Error";
 import Loading from "./Loading";
-
+import { apiUrl } from "../libs/api-url";
 interface PageProps {
   index: number;
 }
@@ -17,10 +17,8 @@ interface EpisodeProps {
 }
 
 const EpisodePage: React.FC<PageProps> = ({ index }) => {
-  const baseUrl = "https://rickandmortyapi.com/api/";
-
   const { data, error, isLoading } = useSWR(
-    `${baseUrl}episode?page=${index}&limit=10`,
+    `${apiUrl}episode?page=${index}&limit=10`,
     fetcher
   );
 

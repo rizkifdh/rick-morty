@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { ModalCharacter } from "./components/ModalCharacter";
 import Error from "./components/Error";
 import Loading from "./components/Loading";
+import { apiUrl } from "./libs/api-url";
 
 interface Character {
   id: number;
@@ -14,10 +15,7 @@ interface Character {
 
 function EpisodeById() {
   const { id } = useParams<{ id: string }>();
-  const { data, isLoading, error } = useSWR(
-    `https://rickandmortyapi.com/api/episode/${id}`,
-    fetcher
-  );
+  const { data, isLoading, error } = useSWR(`${apiUrl}/episode/${id}`, fetcher);
 
   const [characters, setCharacters] = useState<Character[]>([]);
 

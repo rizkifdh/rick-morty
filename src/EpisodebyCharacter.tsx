@@ -4,11 +4,12 @@ import { fetcher } from "./libs/fetcher";
 import { Link } from "react-router-dom";
 import Error from "./components/Error";
 import Loading from "./components/Loading";
+import { apiUrl } from "./libs/api-url";
 
 function EpisodebyCharacter() {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading, error } = useSWR(
-    `https://rickandmortyapi.com/api/character/${id}`,
+    `${apiUrl}/character/${id}`,
     fetcher
   );
 

@@ -6,6 +6,7 @@ import { RiGenderlessLine } from "react-icons/ri";
 import { TbGenderAgender } from "react-icons/tb";
 import Loading from "./Loading";
 import Error from "./Error";
+import { apiUrl } from "../libs/api-url";
 
 interface PageProps {
   index: number;
@@ -22,10 +23,8 @@ interface CharactersProps {
 }
 
 const CharacterPage: React.FC<PageProps> = ({ index, onItemClick }) => {
-  const baseUrl = "https://rickandmortyapi.com/api/";
-
   const { data, error, isLoading } = useSWR(
-    `${baseUrl}character?page=${index}&limit=10`,
+    `${apiUrl}character?page=${index}&limit=10`,
     fetcher
   );
 

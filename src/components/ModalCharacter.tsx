@@ -3,10 +3,11 @@ import { fetcher } from "../libs/fetcher";
 import { Link } from "react-router-dom";
 import Error from "./Error";
 import Loading from "./Loading";
+import { apiUrl } from "../libs/api-url";
 
 export const ModalCharacter: React.FC<{ itemId: number }> = ({ itemId }) => {
   const { data, error, isLoading } = useSWR(
-    `https://rickandmortyapi.com/api/character/${itemId}`,
+    `${apiUrl}/character/${itemId}`,
     fetcher
   );
 
