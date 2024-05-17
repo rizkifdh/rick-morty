@@ -1,15 +1,24 @@
+import { Link } from "react-router-dom";
 import { HiOutlineMenu } from "react-icons/hi";
-import { useState } from "react";
+import { PiHandEyeFill } from "react-icons/pi";
+import { useLocation } from "react-router-dom";
 
 function Header() {
-  const [menu, setmenu] = useState("character");
+  const url = useLocation();
 
-  console.log("menu", menu);
   return (
     <>
-      <div className="flex justify-between items-center">
-        <div className="text-2xl">Rick and Morty</div>
-        <div className="flex items-start justify-start gap-3">
+      <div className="flex justify-between items-center top-0 p-3 md:p-5 bg-base-100 sticky z-40">
+        <div className="text-2xl md:text-3xl">
+          <Link to="/" className="inline-flex items-center gap-1">
+            Rick{" "}
+            <span>
+              <PiHandEyeFill />
+            </span>{" "}
+            Morty
+          </Link>
+        </div>
+        <div className="flex items-center justify-center gap-3 lg:hidden">
           <div>
             <label className="swap swap-rotate">
               <input type="checkbox" className="theme-controller" value="dim" />
@@ -29,32 +38,71 @@ function Header() {
               </svg>
             </label>
           </div>
-          <div className="drawer drawer-end">
-            <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content">
-              <label htmlFor="my-drawer-4" className="text-3xl">
-                <HiOutlineMenu />
-              </label>
-            </div>
-            <div className="drawer-side">
-              <label
-                htmlFor="my-drawer-4"
-                aria-label="close sidebar"
-                className="drawer-overlay"
-              ></label>
-              <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-                <li>
-                  <a onClick={() => setmenu("character")}>Characters</a>
-                </li>
-                <li>
-                  <a onClick={() => setmenu("location")}>Locations</a>
-                </li>
-                <li>
-                  <a>Episodes</a>
-                </li>
-              </ul>
-            </div>
-          </div>{" "}
+          <div className="dropdown dropdown-end">
+            <button className="">
+              <HiOutlineMenu className="w-8 h-8" />
+            </button>
+            <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 md:text-xl">
+              <li>
+                <Link to="/">Characters</Link>
+              </li>
+              <li>
+                <Link to="/episode">Episodes</Link>
+              </li>
+              <li>
+                <Link to="/location">Locations</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="xs:hidden lg:flex text-xl gap-7 items-center">
+          <div>
+            <label className="cursor-pointer grid place-items-center">
+              <input
+                type="checkbox"
+                value="dim"
+                className="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2"
+              />
+              <svg
+                className="col-start-1 row-start-1 stroke-base-100 fill-base-100"
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="12" cy="12" r="5" />
+                <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
+              </svg>
+              <svg
+                className="col-start-2 row-start-1 stroke-base-100 fill-base-100"
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </label>
+          </div>
+          <div>
+            <Link to="/">Characters</Link>
+          </div>
+          <div>
+            <Link to="/episode">Episodes</Link>
+          </div>
+          <div>
+            <Link to="/location">Location</Link>
+          </div>
         </div>
       </div>
     </>
