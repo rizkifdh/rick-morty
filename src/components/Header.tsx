@@ -1,11 +1,8 @@
 import { Link } from "react-router-dom";
 import { HiOutlineMenu } from "react-icons/hi";
 import { PiHandEyeFill } from "react-icons/pi";
-import { useLocation } from "react-router-dom";
 
 function Header() {
-  const url = useLocation();
-
   return (
     <>
       <div className="flex justify-between items-center top-0 p-3 md:p-5 bg-base-100 sticky z-40">
