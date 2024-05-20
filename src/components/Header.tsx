@@ -5,7 +5,7 @@ import { PiHandEyeFill } from "react-icons/pi";
 function Header() {
   return (
     <>
-      <div className="flex justify-between items-center top-0 p-3 md:p-5 bg-base-100 sticky z-40">
+      <div className="flex justify-between items-center top-0 p-3 md:p-5 bg-base-100 sticky z-40 w-full">
         <div className="text-2xl md:text-3xl">
           <Link to="/" className="inline-flex items-center gap-1">
             Rick{" "}
@@ -15,7 +15,7 @@ function Header() {
             Morty
           </Link>
         </div>
-        <div className="flex items-center justify-center gap-3 lg:hidden">
+        <div className="flex items-center justify-center gap-3">
           <div>
             <label className="swap swap-rotate">
               <input type="checkbox" className="theme-controller" value="dim" />
@@ -39,7 +39,7 @@ function Header() {
             <button className="">
               <HiOutlineMenu className="w-8 h-8" />
             </button>
-            <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 md:text-xl">
+            <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 md:text-lg">
               <li>
                 <Link to="/">Characters</Link>
               </li>
@@ -52,7 +52,7 @@ function Header() {
             </ul>
           </div>
         </div>
-        <div className="xs:hidden lg:flex text-xl gap-7 items-center">
+        {/* <div className="xs:hidden lg:flex text-xl gap-7 items-center">
           <div>
             <label className="cursor-pointer grid place-items-center">
               <input
@@ -100,7 +100,7 @@ function Header() {
           <div>
             <Link to="/location">Location</Link>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

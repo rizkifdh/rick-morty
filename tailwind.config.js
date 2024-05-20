@@ -1,7 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require("tailwindcss/defaultTheme");
+const withMT = require("@material-tailwind/react/utils/withMT");
 
-export default {
+export default withMT({
   darkMode: ["class", '[data-theme="dim"]'],
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -16,6 +17,7 @@ export default {
     screens: {
       xs: "344px",
       xp: "414px",
+      md: "768px",
       ...defaultTheme.screens,
     },
   },
@@ -23,4 +25,4 @@ export default {
   daisyui: {
     themes: ["light", "dim"],
   },
-};
+});

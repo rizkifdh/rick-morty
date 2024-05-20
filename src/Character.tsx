@@ -22,8 +22,8 @@ function Character() {
   }
 
   return (
-    <>
-      <div className="text-xl text-center p-5">
+    <div className="w-full p-3">
+      <div className="text-xl text-center">
         {pages}
         <button onClick={() => setPageIndex(pageIndex + 1)}>Load More</button>
       </div>
@@ -35,7 +35,7 @@ function Character() {
           <button>close</button>
         </form>
       </dialog>
-    </>
+    </div>
   );
 }
 

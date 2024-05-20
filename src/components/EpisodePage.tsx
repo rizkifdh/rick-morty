@@ -26,12 +26,12 @@ const EpisodePage: React.FC<PageProps> = ({ index }) => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="md:grid md:grid-cols-2 gap-5 xl:grid-cols-4">
+    <div className="md:grid md:grid-cols-2 gap-5">
       {data &&
         data.results.map((item: EpisodeProps) => (
           <div className="pb-10" key={item.id}>
             <div className="card card-side card-bordered bg-base-100 shadow-xl">
-              <div className="card-body p-2 w-36 text-sm text-left">
+              <div className="card-body p-2  text-sm text-left">
                 <div className="card-title line-clamp-1 text-primary">
                   Title : {item.name}
                 </div>

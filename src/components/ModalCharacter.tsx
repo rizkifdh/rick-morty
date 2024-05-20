@@ -23,7 +23,7 @@ export const ModalCharacter: React.FC<{ itemId: number }> = ({ itemId }) => {
           className="w-full h-full object-cover"
         />
       </figure>
-      <div className="card-body md:text-2xl">
+      <div className="card-body md:text-xl">
         <div className="text-4xl text-primary">{data.name}</div>
         <div>Gender : {data.gender}</div>
         <div>species : {data.species}</div>

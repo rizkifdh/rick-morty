@@ -6,11 +6,26 @@ import { ModalCharacter } from "./components/ModalCharacter";
 import Error from "./components/Error";
 import Loading from "./components/Loading";
 import { apiUrl } from "./libs/api-url";
+import BackButton from "./components/BackButton";
+import {
+  Timeline,
+  TimelineItem,
+  TimelineConnector,
+  TimelineHeader,
+  TimelineIcon,
+  TimelineBody,
+  Avatar,
+} from "@material-tailwind/react";
 
 interface Character {
   id: number;
   name: string;
   image: string;
+  status: string;
+  gender: string;
+  origin: {
+    name: string;
+  };
 }
 
 function EpisodeById() {
@@ -45,10 +60,13 @@ function EpisodeById() {
   if (error) return <Error />;
   if (isLoading) return <Loading />;
 
+  console.log("data", characters);
+
   return (
     <>
       <div className="flex flex-col p-5">
-        <div className="flex flex-col text-lg gap-1">
+        <BackButton />
+        <div className="flex flex-col text-lg gap-1 pt-5">
           <div className="text-primary text-4xl tracking-widest">
             {data.name}
           </div>
@@ -58,24 +76,39 @@ function EpisodeById() {
             {data.characters.length} characters appear in this episode
           </div>
         </div>
-        <ul className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {characters.map((character) => (
-            <li
-              key={character.id}
-              className="flex flex-col items-center"
-              onClick={() => handleCharacterClick(character.id)}
-            >
-              <img
-                src={character.image}
-                alt={character.name}
-                className="w-24 h-24 rounded-full"
-              />
-              <div className="text-center">{character.name}</div>
-            </li>
-          ))}
-        </ul>
+        <Timeline className="">
+          {characters.map((char: Character) => {
+            return (
+              <TimelineItem
+                onClick={() => handleCharacterClick(char.id)}
+                className="cursor-pointer"
+              >
+                <TimelineConnector />
+                <TimelineHeader className="">
+                  <TimelineIcon className="p-0">
+                    <Avatar
+                      size="xl"
+                      src={char.image}
+                      alt={char.name}
+                      placeholder={undefined}
+                      onPointerEnterCapture={undefined}
+                      onPointerLeaveCapture={undefined}
+                    />
+                  </TimelineIcon>
+                  {char.name}
+                </TimelineHeader>
+                <TimelineBody className="pb-10">
+                  <div>
+                    <p>gender : {char.gender}</p>
+                    <p>status : {char.status}</p>
+                    <p>origin : {char.origin.name}</p>
+                  </div>
+                </TimelineBody>
+              </TimelineItem>
+            );
+          })}
+        </Timeline>
       </div>
-
       <dialog id="modal_character" className="modal">
         <div className="modal-box p-0 h-3/4">
           {selectedId && <ModalCharacter itemId={selectedId} />}

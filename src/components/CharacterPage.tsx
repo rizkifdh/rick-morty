@@ -32,10 +32,10 @@ const CharacterPage: React.FC<PageProps> = ({ index, onItemClick }) => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="md:grid md:grid-cols-2 gap-5 xl:grid-cols-4">
+    <div className="md:grid md:grid-cols-2 gap-5">
       {data &&
         data.results.map((item: CharactersProps) => (
-          <div className="pb-10" key={item.id}>
+          <div className="xs:pb-5" key={item.id}>
             <div className="card card-side card-bordered bg-base-100 shadow-xl">
               <figure className="w-36">
                 <img
