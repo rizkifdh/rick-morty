@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { BiArrowFromBottom } from "react-icons/bi";
 import { GiRayGun } from "react-icons/gi";
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
